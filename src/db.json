@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": "3",
+      "title": "Lipstick",
+      "category": "Makeup",
+      "price": 500
+    },
+    {
+      "id": "4",
+      "title": "Lipbalm",
+      "category": "Makeup",
+      "price": 50000
+    },
+    {
+      "id": "5",
+      "title": "shirt",
+      "category": "Fashion",
+      "price": 5000
+    },
+    {
+      "id": "6",
+      "title": "pants",
+      "category": "Fashion",
+      "price": 4000
+    },
+    {
+      "title": "tv",
+      "category": "Electronics",
+      "price": 5000,
+      "id": "7"
+    }
+  ]
+}
