@@ -11,16 +11,16 @@ export default function Home() {
   const { product, isLoading, error } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
-  const [editMode, setEditMode] = useState(false);
-  const [editingId, setEditingId] = useState(null);
-  const [editFormData, setEditFormData] = useState({
+  const [editMain, setEditMain] = useState(false);
+  const [editId, setEditId] = useState(null);
+  const [editData, setEditData] = useState({
     title: "",
     category: "",
     price: "",
   });
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortOrder, setSortOrder] = useState(""); 
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
     dispatch(fetchProduct());
@@ -33,18 +33,18 @@ export default function Home() {
 
   // edit product
   const handleEditClick = (item) => {
-    setEditFormData({
+    setEditData({
       title: item.title,
       category: item.category,
       price: item.price,
     });
-    setEditingId(item.id);
-    setEditMode(true);
+    setEditId(item.id);
+    setEditMain(true);
   };
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
-    setEditFormData((prev) => ({
+    setEditData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -54,16 +54,17 @@ export default function Home() {
     e.preventDefault();
 
     const updatedProduct = {
-      ...editFormData,
-      id: editingId,
-      price: Number(editFormData.price),
+      ...editData,
+      id: editId,
+      price: Number(editData.price),
     };
 
     dispatch(editProduct(updatedProduct));
 
-    setEditMode(false);
-    setEditingId(null);
-    setEditFormData({ title: "", category: "", price: "" });
+    // Reset edit states
+    setEditMain(false);
+    setEditId(null);
+    setEditData({ title: "", category: "", price: "" });
   };
 
   // Filter and sort products
@@ -125,11 +126,11 @@ export default function Home() {
                 <tr key={item.id}>
                   <td>{index + 1}</td>
                   <td>
-                    {editMode && editingId === item.id ? (
+                    {editMain && editId === item.id ? (
                       <input
                         type="text"
                         name="title"
-                        value={editFormData.title}
+                        value={editData.title}
                         onChange={handleEditChange}
                       />
                     ) : (
@@ -137,11 +138,11 @@ export default function Home() {
                     )}
                   </td>
                   <td>
-                    {editMode && editingId === item.id ? (
+                    {editMain && editId === item.id ? (
                       <input
                         type="text"
                         name="category"
-                        value={editFormData.category}
+                        value={editData.category}
                         onChange={handleEditChange}
                       />
                     ) : (
@@ -149,11 +150,11 @@ export default function Home() {
                     )}
                   </td>
                   <td>
-                    {editMode && editingId === item.id ? (
+                    {editMain && editId === item.id ? (
                       <input
                         type="number"
                         name="price"
-                        value={editFormData.price}
+                        value={editData.price}
                         onChange={handleEditChange}
                       />
                     ) : (
@@ -161,7 +162,7 @@ export default function Home() {
                     )}
                   </td>
                   <td>
-                    {editMode && editingId === item.id ? (
+                    {editMain && editId === item.id ? (
                       <button onClick={handleEditSubmit}>Save</button>
                     ) : (
                       <button
