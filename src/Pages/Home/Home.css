@@ -1,0 +1,74 @@
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+table {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  border-collapse: collapse;
+  background-color: rgb(246, 237, 205);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background-color: #792727;
+  color: #f6eded;
+  font-weight: 600;
+}
+
+th, td {
+  text-align: left;
+  padding: 14px 20px;
+  border-bottom: 1px solid #eee;
+}
+td:last-child,
+td:nth-last-child(2) {
+  text-align: center;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: 0.5s;
+}
+
+.edit {
+  background-color: #19d222; /* Edit - blue */
+  color: white;
+}
+
+.edit:hover {
+  background-color: rgb(200, 167, 7);
+  color: #f4f2f6;
+  border: 1px solid #050607;
+}
+.delete {
+  background-color: #d30808; /* Delete - red */
+  color: white;
+}
+
+.delete:hover {
+  background-color: rgb(242, 9, 9);
+  color: #ece5e5;
+  border: 1px solid #0a0909;
+}
+
+.search-sort {
+ margin-left: 55%;
+ margin-top: 120px;
+ gap: 20px;
+  display: flex;
+  
+}
+
+.search-sort input,
+.search-sort select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
